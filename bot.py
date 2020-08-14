@@ -1,7 +1,10 @@
 import discord
+import os
 from discord.ext import commands
+from dotenv import load_dotenv
+load_dotenv()
 
-TOKEN = 'NzQyOTc2OTExNTc5MjgzNDg2.XzN9Kw.GlECebbNj7x-saIqjuTdvouLOdc'
+token = os.getenv('TOKEN')
 client = commands.Bot(command_prefix=".")
 
 @client.event
@@ -13,7 +16,7 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-    channel = discord. utils.get(member.guild.channels, name='xd')
+    channel = discord.utils.get(member.guild.channels, name='xd')
     await channel.send(f'{member.mention} #1 Who the fuck are you? #2 Why the fuck are you here?')
 
 #Discord member join message
@@ -25,4 +28,4 @@ async def on_member_remove(member):
 
 #Dsicord member leave message
 
-client.run(TOKEN)
+client.run(token)
